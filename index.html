@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本地组纽配色器</title>
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Kumihimo local designer</p>
+        <h1>组纽配色器</h1>
+      </div>
+      <div class="braid-select">
+        <label for="braidSelect">编法</label>
+        <select id="braidSelect">
+          <option value="mitake-24">24股御岳组</option>
+        </select>
+      </div>
+    </header>
+
+    <section class="workspace" aria-label="组纽配色工作区">
+      <div class="preview-panel">
+        <div class="toolbar">
+          <div>
+            <strong id="braidName">Mitake-style braid 24</strong>
+            <span id="threadCount">24 股</span>
+          </div>
+          <div class="history-actions">
+            <button type="button" id="exportButton" title="保存当前配色方案为 PNG">保存方案</button>
+            <button type="button" id="undoButton" title="撤销">撤销</button>
+            <button type="button" id="redoButton" title="重做">重做</button>
+          </div>
+        </div>
+        <svg id="braidSvg" class="braid-svg" role="img" aria-label="组纽二维纹理与编盘线位"></svg>
+      </div>
+
+      <aside class="controls" aria-label="配色控制">
+        <section class="control-section">
+          <h2>当前颜色</h2>
+          <div class="current-color-row">
+            <span id="currentColorSample" class="current-color-sample"></span>
+            <input id="currentColorText" type="text" value="#ff0000" maxlength="7" spellcheck="false">
+          </div>
+        </section>
+
+        <section class="control-section">
+          <h2>颜色选择</h2>
+          <div class="tabs" role="tablist" aria-label="颜色选择方式">
+            <button type="button" class="tab-button active" data-tab="free">自由色</button>
+            <button type="button" class="tab-button" data-tab="dmc-palette">DMC 色卡</button>
+            <button type="button" class="tab-button" data-tab="dmc-code">DMC 编号</button>
+          </div>
+
+          <div class="tab-panel active" id="tab-free">
+            <input id="freeColorPicker" class="native-picker" type="color" value="#ff0000">
+          </div>
+
+          <div class="tab-panel" id="tab-dmc-palette">
+            <div id="dmcPaletteGrid" class="dmc-grid" aria-label="DMC 色卡"></div>
+          </div>
+
+          <div class="tab-panel" id="tab-dmc-code">
+            <div class="dmc-code-row">
+              <input id="dmcCodeInput" type="text" placeholder="例如 666" maxlength="5">
+              <button type="button" id="dmcCodeButton">设置</button>
+            </div>
+            <p id="dmcCodeResult" class="dmc-result">输入 DMC 编号选择颜色。</p>
+          </div>
+        </section>
+
+        <section class="control-section">
+          <h2>最近使用</h2>
+          <div id="recentColors" class="recent-colors"></div>
+        </section>
+
+        <section class="control-section">
+          <h2>数据结构</h2>
+          <p class="note">当前页面读取本地编法数据，核心映射是 threadId 到圆盘线位与二维纹理区域。新增编法时只需补充同格式 JSON。</p>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script src="./data/braids/mitake-24.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
