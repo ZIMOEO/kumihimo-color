@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "braids": [
+    {
+      "id": "mitake-24",
+      "name": "24股御岳组",
+      "threadCount": 24,
+      "definition": "./braids/mitake-24.json",
+      "fallbackScript": "./braids/mitake-24.js",
+      "surfaceSvg": "./svgs/mitake-24.svg"
+    }
+  ]
+}
